@@ -6,17 +6,18 @@ const databaseUrl: string | undefined = process.env.MONGODB_URI;
 if (!databaseUrl) {
   throw new ErrorsApp('MONGODB_URI_NOT_DEFINED', 404);
 }
-
-const mongoConnection = mongoose.connect(databaseUrl, {
+const mongooseOptions = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useFindAndModify: true,
   useCreateIndex: true,
-});
+};
+
+const mongooseConnection = mongoose.connect(databaseUrl, mongooseOptions);
 
 const checkConnection = mongoose.connection;
 
 checkConnection.on('error', (error) => console.error(error));
-checkConnection.once('open', () => console.log('Connected to mongoDB'));
+checkConnection.once('open', () => console.log('[MONGOOSE] Connected to MongoDB'));
 
-export default mongoConnection;
+export default mongooseConnection;

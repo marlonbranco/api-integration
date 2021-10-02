@@ -13,6 +13,8 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "semi":"off",
+    "camelcase":"off",
     "no-useless-constructor": "off",
     "indent": ["error", 2],
     "import/no-unresolved": "off",
