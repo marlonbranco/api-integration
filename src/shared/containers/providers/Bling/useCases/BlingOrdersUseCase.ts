@@ -58,19 +58,16 @@ class BlingOrdersUseCase implements IBling {
     };
 
     const xml = this.xmlProvider.generate(formattedOrder);
-    console.log(typeof xml)
+
     try {
       const blingKey = process.env.BLING_API_KEY!;
       const response = await blingApi.post('/pedido/json', null, {
-        // headers: {
-        //   'Content-Type': 'application/x-www-form-urlencoded',
-        // },
         params: {
           apikey: blingKey,
           xml
         }
       });
-      console.log('RESPONSE DATA:', response.data.retorno.erros);
+
       return response.data;
     } catch (error: any) {
       throw new ErrorsApp(error);

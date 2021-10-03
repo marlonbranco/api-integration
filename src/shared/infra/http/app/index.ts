@@ -1,8 +1,9 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import { errors } from 'celebrate';
 
 import errorHandling from '@sharedInfra/http/middlewares/errorHandling';
+import agenda from '@shared/containers/providers/Agenda/migrateDealsJob';
 import routes from '../routes/index';
 
 class App {
@@ -19,6 +20,7 @@ class App {
     this.express.use(routes);
     this.express.use(errors());
     this.express.use(errorHandling);
+    this.express.use((request: Request, response: Response, _: NextFunction) => { agenda; });
   }
 }
 

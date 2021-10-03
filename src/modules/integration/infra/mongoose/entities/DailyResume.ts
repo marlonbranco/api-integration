@@ -5,6 +5,7 @@ import IDailyResumeDTO from '@modules/integration/dtos/IDailyResumeDTO';
 const DailyResumeSchema = new Schema<IDailyResumeDTO>({
   totalValue: { type: Number, required: true },
   totalWonDeals: { type: Number, required: true },
+  resumeDate: { type: Number, required: true },
   wonDeals: [
     {
       dealId: { type: Number, required: true, unique: true },
@@ -13,11 +14,12 @@ const DailyResumeSchema = new Schema<IDailyResumeDTO>({
       title: { type: String, required: true },
       productsCount: { type: Number, required: true },
       weightedValue: { type: Number, required: true },
-      won_time: { type: Date, required: true }
+      wonTime: { type: Date, required: true }
     }
   ]
-});
+},
+{ collection: 'dailyResumes' });
 
-const DailyResume = model<IDailyResumeDTO>('DailyResume', DailyResumeSchema);
+const DailyResume = model<IDailyResumeDTO>('dailyResumes', DailyResumeSchema);
 
 export { DailyResume };

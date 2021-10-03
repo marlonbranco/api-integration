@@ -16,6 +16,10 @@ class DailyResumeRepository implements IDailyResumeRepository {
 
     return notRegisteredDeals;
   }
+
+  public async deleteOldDailyResume(date: Date): Promise<void> {
+    await DailyResume.delete({ resumeDate: { $eq: date } }).exec();
+  }
 }
 
 export default DailyResumeRepository;

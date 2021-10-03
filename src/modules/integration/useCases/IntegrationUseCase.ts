@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 import IDailyResumeRepository from '@modules/integration/repositories/IDailyResumeRepository';
-import IPipedriveDealsUseCase from '@shared/containers/providers/Pipedrive/models/IPipedriveDealsUseCase';
+import IPipedriveDealsUseCase, { IDealDTO } from '@shared/containers/providers/Pipedrive/models/IPipedriveDealsUseCase';
 import IBlingOrdersUseCase from '@shared/containers/providers/Bling/models/IBlingOrdersUseCase'
 import IDailyResumeDTO from '../dtos/IDailyResumeDTO';
 
@@ -15,18 +15,21 @@ class IntegrationUseCase {
     private blingOrdersUseCase: IBlingOrdersUseCase
   ) {}
 
-  public async registerWonDealsOnBling() {
+  public async registerDailyResume(deals: IDealDTO[]): Promise<void> {
+    const dailyResume: IDailyResumeDTO[] = [];
+
+    deals.forEach((deal) => {
+      const newDailyResume = {
+
+      }
+    })
+  }
+
+  public async registerWonDealsOnBling(): Promise<void> {
     const deals = await this.pipedriveDealsUseCase.getDeals();
 
     const orders = await this.blingOrdersUseCase.registerOrders(deals);
 
-    // const dailyResume: IDailyResumeDTO[] = [];
-
-    // deals.forEach((deal) => {
-    //   const newDailyResume = {
-
-    //   }
-    // })
     return orders;
   }
 }

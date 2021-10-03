@@ -12,6 +12,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "agenda": "^4.2.1",
     "axios": "^0.22.0",
     "celebrate": "^15.0.0",
     "class-transformer": "^0.4.0",
