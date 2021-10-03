@@ -1,11 +1,11 @@
 import { AxiosResponse } from 'axios';
 import ErrorsApp from '@errors/ErrorsApp';
-import IDealDTO from '@sharedProviders/Pipedrive/dtos/IDealDTO';
-import IPipedrive, { IResponse } from '../interfaces/IPipedriveDealsUseCase';
+import IDealDTO from '../dtos/IDealDTO';
+import IPipedrive, { IPipedriveResponse } from '../models/IPipedriveDealsUseCase';
 import { pipedriveApi } from '../infra/http/apiConnection';
 
 class PipedriveDealsUseCase implements IPipedrive {
-  public async getDeals(): Promise<IResponse[]> {
+  public async getDeals(): Promise<IPipedriveResponse[]> {
     const pipedriveToken = process.env.PIPEDRIVE_API_TOKEN;
 
     try {
@@ -16,13 +16,18 @@ class PipedriveDealsUseCase implements IPipedrive {
         }
       });
       const { data }: IDealDTO = response.data;
-      const deals: IResponse[] = [];
+      const deals: IPipedriveResponse[] = [];
 
-      data.forEach((deal, i) => {
+      data.forEach((deal) => {
         const newDeal = {
+          dealId: deal.id,
+          personId: deal.person_id.value,
           personName: deal.person_name,
+          orgId: deal.org_id.value,
+          dealTitle: deal.title,
           weightedValue: deal.weighted_value,
-          productsCount: deal.products_count
+          productsCount: deal.products_count,
+          dealWonTime: deal.won_time
         }
         deals.push(newDeal);
       });

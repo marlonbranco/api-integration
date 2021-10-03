@@ -5,6 +5,7 @@ import 'express-async-errors';
 import mongooseConnection from '@sharedInfra/mongoose';
 
 import ErrorsApp from '@errors/ErrorsApp';
+import '@shared/containers';
 import app from './app';
 
 const PORT = Number(process.env.PORT) || 3333;

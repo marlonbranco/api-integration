@@ -13,6 +13,7 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "no-empty-function":"off",
     "semi":"off",
     "camelcase":"off",
     "no-useless-constructor": "off",

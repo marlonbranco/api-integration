@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
 import { Request, Response } from 'express';
 
-import PipedriveDealsUseCase from '@shared/providers/Pipedrive/useCases/PipedriveDealsUseCase';
+import PipedriveDealsUseCase from '../../../useCases/PipedriveDealsUseCase';
 
 class PipedriveDealsController {
   public async index(request: Request, response: Response) {

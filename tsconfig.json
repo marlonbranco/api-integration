@@ -21,7 +21,7 @@
       "@errors/*": ["./src/shared/errors/*"],
       "@shared/*": ["./src/shared/*"],
       "@sharedInfra/*": ["./src/shared/infra/*"],
-      "@sharedProviders/*": ["./src/shared/providers/*"],
+      "@sharedProviders/*": ["./src/shared/containers/providers/*"],
       "@utils/*": ["./src/shared/utils/*"]
     },
     "rootDirs": ["./src", "./tests"],
