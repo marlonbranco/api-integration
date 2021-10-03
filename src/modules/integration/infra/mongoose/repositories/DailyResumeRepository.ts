@@ -12,13 +12,11 @@ class DailyResumeRepository implements IDailyResumeRepository {
   public async filterRegisteredDeals(dealIds: IDealIdsDTO): Promise<any> {
     const notRegisteredDeals = await DailyResume.find({ 'wonDeals.dealId': { $nin: dealIds } });
 
-    console.log(notRegisteredDeals);
-
     return notRegisteredDeals;
   }
 
   public async deleteOldDailyResume(date: Date): Promise<void> {
-    await DailyResume.delete({ resumeDate: { $eq: date } }).exec();
+    await DailyResume.deleteOne({ resumeDate: { $eq: date } }).exec();
   }
 }
 

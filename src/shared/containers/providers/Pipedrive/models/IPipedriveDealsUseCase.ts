@@ -24,7 +24,7 @@ export interface IPipedriveResponse {
     dealTitle: string;
     weightedValue: number;
     productsCount: number;
-    dealWonTime: Date;
+    dealWonTime: string;
 }
 
 export default interface IPipedrive {

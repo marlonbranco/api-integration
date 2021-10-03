@@ -9,6 +9,6 @@ export default interface IDailyResumeDTO {
     title: string;
     productsCount: number;
     weightedValue: number;
-    wonTime: Date;
+    dealWonTime: Date;
   }[]
 }

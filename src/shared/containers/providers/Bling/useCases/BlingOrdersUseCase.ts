@@ -78,9 +78,8 @@ class BlingOrdersUseCase implements IBling {
     const orders = await this.dismemberOrdersBatch(batch);
     const registeredOrders = []
     for await (const order of orders) {
-      const { response } = await this.formatAndRegisterOrder(order);
-      registeredOrders.push(response);
-      console.log('RESPONSE:', response);
+      const data = await this.formatAndRegisterOrder(order);
+      registeredOrders.push(data);
     }
     return registeredOrders;
   }

@@ -14,7 +14,7 @@ const DailyResumeSchema = new Schema<IDailyResumeDTO>({
       title: { type: String, required: true },
       productsCount: { type: Number, required: true },
       weightedValue: { type: Number, required: true },
-      wonTime: { type: Date, required: true }
+      dealWonTime: { type: Date, required: true }
     }
   ]
 },
