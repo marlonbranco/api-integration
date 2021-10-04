@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import pipedriveRouter from '@shared/containers/providers/Pipedrive/infra/http/routes/pipedriveRouter';
-import integrationRouter from '@modules/integration/infra/http/routes/integration.routes';
+import dailyResumesRouter from '@modules/dailyResume/infra/http/routes/dailyResume.routes';
 
 const routes = Router();
 
-routes.use('/api/', pipedriveRouter);
-routes.use('/api/', integrationRouter);
+routes.use('/api/', dailyResumesRouter);
 
 export default routes;

@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { parseISO } from 'date-fns';
 import ErrorsApp from '@errors/ErrorsApp';
 import IDealDTO from '../dtos/IDealDTO';
 import IPipedrive, { IPipedriveResponse } from '../models/IPipedriveDealsUseCase';

@@ -8,6 +8,10 @@ class DailyResumeRepository implements IDailyResumeRepository {
     return DailyResume.insertMany(data);
   }
 
+  public async listAllDailyResumes(): Promise<IDailyResumeDTO[]> {
+    return DailyResume.find().lean();
+  }
+
   public async findResumeByDate(date: Date): Promise<any> {
     return DailyResume.findOne({ resumeDate: { $eq: date } });
   }
@@ -17,7 +21,7 @@ class DailyResumeRepository implements IDailyResumeRepository {
   }
 
   public async updateResumeById(data: IDailyResumeDTO, deals: IWonDealsDTO[]):
-  Promise<IDailyResumeDTO> {
+  Promise<IDailyResumeDTO | null> {
     return DailyResume.findOneAndUpdate({ _id: data._id },
       {
         totalValue: data.totalValue,

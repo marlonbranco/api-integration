@@ -27,7 +27,7 @@ class GenerateDailyResumeUseCase {
       if (isAfter(parsedDealDate, date) && isBefore(parsedDealDate, providedDatePlus24h)) {
         const newWonDeal: IWonDealsDTO = generateWonDeal(deal, parsedDealDate);
 
-        dailyResume.wonDeals.push(newWonDeal);
+        dailyResume.wonDeals!.push(newWonDeal);
 
         totalValueAccumulator += deal.weightedValue;
         totalWonDealsCount += 1;

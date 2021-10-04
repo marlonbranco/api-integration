@@ -7,9 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node --max-old-space-size=5000 './dist/shared/infra/http/server.js'",
-    "start:dev": "ts-node-dev -r tsconfig-paths/register --inspect --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "start:dev": "ts-node-dev -r tsconfig-paths/register --inspect --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts"
   },
   "dependencies": {
     "agenda": "^4.2.1",

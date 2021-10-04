@@ -3,7 +3,6 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 
 import errorHandling from '@sharedInfra/http/middlewares/errorHandling';
-// import agenda from '@shared/containers/providers/Agenda/agendaWorker';
 import scheduledJob from '@shared/containers/providers/NodeSchedule/integrateAndMigrateJob';
 import routes from '../routes/index';
 

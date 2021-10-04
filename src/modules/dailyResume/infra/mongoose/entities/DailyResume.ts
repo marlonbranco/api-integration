@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 
-import IDailyResumeDTO from '@modules/integration/dtos/IDailyResumeDTO';
+import IDailyResumeDTO from '@modules/dailyResume/dtos/IDailyResumeDTO';
 
 const DailyResumeSchema = new Schema<IDailyResumeDTO>({
   totalValue: { type: Number, required: true },

@@ -12,6 +12,6 @@ export default interface IDealDTO {
     title: string;
     products_count: number;
     weighted_value: number;
-    won_time: Date;
+    won_time: string;
   }[];
 }

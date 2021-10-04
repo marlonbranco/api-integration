@@ -3,7 +3,7 @@ import { container, injectable, inject } from 'tsyringe';
 import IPipedriveDealsUseCase from '@shared/containers/providers/Pipedrive/models/IPipedriveDealsUseCase';
 import IBlingOrdersUseCase from '@shared/containers/providers/Bling/models/IBlingOrdersUseCase'
 import IDailyResumeRepository from '@modules/dailyResume/repositories/IDailyResumeRepository'
-import DailyResumeUseCase from '@modules/dailyResume/useCases/DailyResumeUseCase'
+import RegisterDealsAndDailyResumesUseCase from '@modules/dailyResume/useCases/RegisterDealsAndDailyResumesUseCase'
 import IPipedriveResponseDTO from '@modules/dailyResume/dtos/IPipedriveResponseDTO';
 
 @injectable()
@@ -31,14 +31,14 @@ class IntegrationUseCase {
   }
 
   public async registerWonDealsOnBling(): Promise<any> {
-    const registerDealsResume = container.resolve(DailyResumeUseCase);
+    const registerDealsResume = container.resolve(RegisterDealsAndDailyResumesUseCase);
 
     const deals = await this.pipedriveDealsUseCase.getDeals();
 
     const hasDealsToBeMigrated = await this.filterMigratedDeals(deals);
 
     if (hasDealsToBeMigrated.length) {
-      await registerDealsResume.registerWonDealsOnMongo(hasDealsToBeMigrated);
+      await registerDealsResume.register(hasDealsToBeMigrated);
 
       await this.blingOrdersUseCase.registerOrders(hasDealsToBeMigrated);
 
