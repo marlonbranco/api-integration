@@ -101,7 +101,6 @@ Ou consultar um resumo pela data
 ```
     ├── .github
     ├── src            # Arquivos de Recursos da aplicação
-    │   ├── @types     # Configurações de tipos para o TypeScript
     │   ├── modules    # Módulos da aplicação onde se encontrão os domínios
     │   └── shared     # Pasta com os recursos compartilhados entre os domínios
     └── ...
@@ -110,7 +109,6 @@ Ou consultar um resumo pela data
 ### Pasta de Modules 📁
 
 ```
-├── ...
 ├── modules          # Módulos da aplicação
 │   ├── dailyResume  # Módulo de resumos diários/ entidade dailyResumes
 │   ├── integration  # Módulo de integração/ lógica de negócio da integração completa
