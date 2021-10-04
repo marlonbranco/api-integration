@@ -1,5 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 import ErrorsApp from '@errors/ErrorsApp';
+import delayBetweenRequests from '@shared/utils/delayBetweenRequests';
 import IOrderDTO from '../dtos/IOrderDTO';
 import IBling from '../models/IBlingOrdersUseCase';
 import { blingApi } from '../infra/http/apiConnection';
@@ -34,7 +35,7 @@ class BlingOrdersUseCase implements IBling {
     return orders;
   }
 
-  public async formatAndRegisterOrder(order: IOrderDTO): Promise<any> {
+  public formatXmlToBlingPattern(order: IOrderDTO): string {
     const formattedOrder = {
       pedido: {
         numero: order.orderId,
@@ -57,31 +58,34 @@ class BlingOrdersUseCase implements IBling {
       }
     };
 
-    const xml = this.xmlProvider.generate(formattedOrder);
+    return this.xmlProvider.generate(formattedOrder);
+  }
+
+  public async registerSingleOrder(order: IOrderDTO): Promise<any> {
+    const xml = this.formatXmlToBlingPattern(order);
 
     try {
       const blingKey = process.env.BLING_API_KEY!;
-      const response = await blingApi.post('/pedido/json', null, {
+      await blingApi.post('/pedido/json', null, {
         params: {
           apikey: blingKey,
           xml
         }
       });
-
-      return response.data;
+      return { message: 'DATA WAS SENT' };
     } catch (error: any) {
       throw new ErrorsApp(error);
     }
   }
 
-  public async registerOrders(batch: IPipedriveResponse[]): Promise<any> {
+  public async registerOrders(batch: IPipedriveResponse[]): Promise<void> {
     const orders = await this.dismemberOrdersBatch(batch);
-    const registeredOrders = []
+
     for await (const order of orders) {
-      const data = await this.formatAndRegisterOrder(order);
-      registeredOrders.push(data);
+      await delayBetweenRequests(334);
+      await this.registerSingleOrder(order);
+      console.log('ORDER SENT')
     }
-    return registeredOrders;
   }
 }
 

@@ -1,4 +1,4 @@
-export default interface IPipedriveResponse {
+export default interface IPipedriveResponseDTO {
     dealId: number;
     personId: number;
     personName: string;

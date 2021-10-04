@@ -14,6 +14,7 @@ export interface IBlingResponse {
 
 export default interface IBling {
   dismemberOrdersBatch(batch: IPipedriveResponse[]): Promise<IOrderDTO[]>;
-  formatAndRegisterOrder(order: IOrderDTO): Promise<any>;
+  formatXmlToBlingPattern(order: IOrderDTO): string;
+  registerSingleOrder(order: IOrderDTO): Promise<any>;
   registerOrders(batch: IPipedriveResponse[]): Promise<any>;
 }

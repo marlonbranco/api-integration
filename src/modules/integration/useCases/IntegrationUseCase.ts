@@ -1,13 +1,10 @@
-import { injectable, inject } from 'tsyringe';
-import {
-  format, parseISO, startOfDay, isAfter, isBefore, addHours
-} from 'date-fns';
-import IDailyResumeRepository from '@modules/integration/repositories/IDailyResumeRepository';
+import { container, injectable, inject } from 'tsyringe';
+
 import IPipedriveDealsUseCase from '@shared/containers/providers/Pipedrive/models/IPipedriveDealsUseCase';
 import IBlingOrdersUseCase from '@shared/containers/providers/Bling/models/IBlingOrdersUseCase'
-import IPipedriveResponseDTO from '../dtos/IPipedriveResponseDTO';
-import IWonDealsDTO from '../dtos/IWonDealsDTO';
-import IDailyResumeDTO from '../dtos/IDailyResumeDTO';
+import IDailyResumeRepository from '@modules/dailyResume/repositories/IDailyResumeRepository'
+import DailyResumeUseCase from '@modules/dailyResume/useCases/DailyResumeUseCase'
+import IPipedriveResponseDTO from '@modules/dailyResume/dtos/IPipedriveResponseDTO';
 
 @injectable()
 class IntegrationUseCase {
@@ -20,80 +17,35 @@ class IntegrationUseCase {
     private blingOrdersUseCase: IBlingOrdersUseCase
   ) {}
 
-  public async generateDailyResume(deals: IPipedriveResponseDTO[], date: string): Promise<any> {
-    const providedDate = parseISO(date);
-    const dailyResume: IDailyResumeDTO = {
-      totalValue: 0,
-      totalWonDeals: 0,
-      resumeDate: providedDate,
-      wonDeals: []
-    };
-    let totalValueAccumulator = 0;
-    let totalWonDealsCount = 0;
-    deals.forEach((deal) => {
-      const parsedDealDate = parseISO(deal.dealWonTime);
-      const providedDatePlus24h = addHours(providedDate, 24);
-      console.log(parsedDealDate);
-      if (isAfter(parsedDealDate, providedDate) && isBefore(parsedDealDate, providedDatePlus24h)) {
-        const newDailyResume: IWonDealsDTO = {
-          dealId: deal.dealId,
-          personId: deal.personId,
-          personName: deal.personName,
-          title: deal.dealTitle,
-          productsCount: deal.productsCount,
-          weightedValue: deal.weightedValue,
-          dealWonTime: parsedDealDate
-        }
-        dailyResume.wonDeals.push(newDailyResume);
-        totalValueAccumulator += deal.weightedValue;
-        totalWonDealsCount += 1;
+  public async filterMigratedDeals(deals: IPipedriveResponseDTO[]):
+  Promise<IPipedriveResponseDTO[]> {
+    const filteredDeals: IPipedriveResponseDTO[] = [];
+
+    for await (const deal of deals) {
+      const dealWasMigrated = await this.dailyResumeRepository.findDealById(deal.dealId);
+      if (!dealWasMigrated) {
+        filteredDeals.push(deal);
       }
-    });
-
-    dailyResume.totalValue = totalValueAccumulator;
-    dailyResume.totalWonDeals = totalWonDealsCount;
-
-    console.log('DAILY RESUME: ', dailyResume);
-
-    return dailyResume;
-  }
-
-  public async registerWonDealsOnMongo(): Promise<void> {
-    const deals = await this.pipedriveDealsUseCase.getDeals();
-
-    const dealWonDates = deals.map((deal) => {
-      const parsedDate = parseISO(deal.dealWonTime);
-
-      const stringDate = startOfDay(parsedDate).toISOString()
-
-      return stringDate;
-    });
-
-    const uniqueDates = [...new Set(dealWonDates)];
-
-    console.log('MOM GET BETTER SOON! 🙏 ', uniqueDates);
-
-    const dailyResumesBatch: IDailyResumeDTO[] = []
-
-    for await (const date of uniqueDates) {
-      console.log(date);
-      const newDailyResume = await this.generateDailyResume(deals, date);
-      dailyResumesBatch.push(newDailyResume);
     }
-    const newDailyResumes = await this.dailyResumeRepository.insertMany(dailyResumesBatch);
-
-    console.log(newDailyResumes)
+    return filteredDeals;
   }
 
   public async registerWonDealsOnBling(): Promise<any> {
-    // const deals = await this.pipedriveDealsUseCase.getDeals();
+    const registerDealsResume = container.resolve(DailyResumeUseCase);
 
-    // const orders = await this.blingOrdersUseCase.registerOrders(deals);
+    const deals = await this.pipedriveDealsUseCase.getDeals();
 
-    const dailyResume = await this.registerWonDealsOnMongo();
+    const hasDealsToBeMigrated = await this.filterMigratedDeals(deals);
 
-    console.log(dailyResume);
-    return { message: 'REGISTERED' };
+    if (hasDealsToBeMigrated.length) {
+      await registerDealsResume.registerWonDealsOnMongo(hasDealsToBeMigrated);
+
+      await this.blingOrdersUseCase.registerOrders(hasDealsToBeMigrated);
+
+      return hasDealsToBeMigrated;
+    }
+    console.log('NO DATA WAS MIGRATED')
+    return deals;
   }
 }
 
