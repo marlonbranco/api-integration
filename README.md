@@ -19,7 +19,7 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 
 #### Requisitos do desafio ✅
 
-| Status  | Requisitos |
+| Status | Requisitos |
 | ------------- | -------------- |
 | ✅     | Criar contas testes nas plataformas Pipedrive e Bling. |
 | ✅    | Criar uma integração entre as plataformas Pipedrive e Bling (A integração deve buscar as oportunidades com status igual a ganho no Pipedrive, depois inseri-las como pedido no Bling). |
