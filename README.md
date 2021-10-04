@@ -17,6 +17,29 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 | Node 12.x     | Executar a aplicação de forma local |
 | Postman ^4.4.3 | Realizar requests à API |
 
+#### Requisitos do desafio ✅
+
+| Status  | Requisitos |
+| ------------- | -------------- |
+| ✅     | Criar contas testes nas plataformas Pipedrive e Bling. |
+| ✅    | Criar uma integração entre as plataformas Pipedrive e Bling (A integração deve buscar as oportunidades com status igual a ganho no Pipedrive, depois inseri-las como pedido no Bling). |
+| ✅    | Criar banco de dados Mongo, existem serviços como MongoDB Atlas para criar de graça. |
+| ✅ | Criar uma collection no banco de dados MongoDB agregando as oportunidades inseridas no Bling por dia e valor total.
+ |
+ | ✅ | Criar endpoint para trazer os dados consolidados da collection do MongoDB.
+ |
+REQUISITOS:
+
+● Criar contas testes nas plataformas Pipedrive e Bling.
+
+● Criar uma integração entre as plataformas Pipedrive e Bling (A integração deve buscar as oportunidades com status igual a ganho no Pipedrive, depois inseri-las como pedido no Bling).
+
+● Criar banco de dados Mongo, existem serviços como MongoDB Atlas para criar de graça.
+
+● Criar uma collection no banco de dados MongoDB agregando as oportunidades inseridas no Bling por dia e valor total.
+
+● Criar endpoint para trazer os dados consolidados da collection do MongoDB.
+
 ### Variáveis de ambiente
 | NOME | DESCRIÇÃO |
 | --- | --- |
@@ -28,6 +51,7 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 | BLING_API_URL | URL da API do Bling. |
 | BLING_API_KEY | Key de acesso a API do Pipedrive. |
 
+#### OBS: Apenas subi o arquivo .env junto com a aplicação para facilitar a execução do mesmo.
 
 ## Containerização da aplicação utilizando o Docker 🐳
 [![Docker](https://img.shields.io/badge/-Docker-2496ed?logo=docker&logoColor=white)](https://docs.docker.com/)
