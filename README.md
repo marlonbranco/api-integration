@@ -79,10 +79,12 @@ npm run deploy
 ## Agora vamos direto ao Endpoint (badum tiss 🥁)
 
 **GET** Consultar todos os resumos diários ou consultar um resumo pela data:
-
-> /api/integration/resumes
-> /api/integration/resumes?date=2021-10-04
-
+``
+/api/integration/resumes
+``
+``
+/api/integration/resumes?date=2021-10-04
+``
 ## Arquitetura da Aplicação
 
 ![API Archtecture](.github/media/api-archtecture.png)
