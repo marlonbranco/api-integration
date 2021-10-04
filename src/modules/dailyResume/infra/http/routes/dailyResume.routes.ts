@@ -5,6 +5,6 @@ import dailyResumeController from '../controllers/DailyResumeController';
 const dailyResumesRouter = Router();
 
 // Integration
-dailyResumesRouter.get('/integration/resume', dailyResumeController.index);
+dailyResumesRouter.get('/integration/resumes', dailyResumeController.index);
 
 export default dailyResumesRouter;

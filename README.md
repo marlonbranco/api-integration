@@ -1,4 +1,4 @@
-# Projeto API RESTful para integração entre Pipedrive e Bling
+# Projeto de uma API RESTful para integração entre Pipedrive e Bling
 
 ## Desenvolvida em utilizando as tecnologias TypeScript, NodeJS, Express, Mongoose, Axios, Node-schedule 🛠
 
@@ -12,9 +12,64 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 
 | Requerimento  | Uso |
 | ------------- | -------------- |
-| Docker 3.x    | Containerização |
+| Yarn 1.1x     | Execução da aplicação e realização do deploy local |
+| Docker 3.x    | Containerização e execução da aplicação |
 | Node 12.x     | Executar a aplicação de forma local |
 | Postman ^4.4.3 | Realizar requests à API |
+
+### Variáveis de ambiente
+| NOME | EXEMPLO | DESCRIÇÃO |
+| --- | --- | --- |
+| APP_URL | http://0.0.0.0 | URL que a aplicação irá ser executada. |
+| APP_PORT | 3333 | Porta que a aplicação ficará disponível. |
+| MONGODB_URI | mongodb://marlonbranco:789456@api-integrations-shard-00-00.6kzc4.mongodb.net:27017,api-integrations-shard-00-01.6kzc4.mongodb.net:27017,api-integrations-shard-00-02.6kzc4.mongodb.net:27017/apiIntegration?ssl=true&replicaSet=atlas-828xr4-shard-0&authSource=admin&retryWrites=true&w=majority | URI de acesso do MongoDB, deve conter usuário e senha na URI. este pode ser um MongoDB local ou Mongo Atlas |
+| PIPEDRIVE_API_URL | https://api.pipedrive.com/v1 | URL da API do Pipedrive. |
+| PIPEDRIVE_API_TOKEN | 7eee7cc8090157a449b5c1bbbb20139c74446979 | Token de acesso a API do Pipedrive. |
+| BLING_API_URL | https://bling.com.br/Api/v2 | URL da API do Bling. |
+| BLING_API_KEY | 166562a621bfcba9f63c13c37e0a74e4dd85b8c8703081fe960b5d27a80218158c983308 | Key de acesso a API do Pipedrive. |
+
+
+## Containerização da aplicação utilizando o Docker 🐳
+[![Docker](https://img.shields.io/badge/-Docker-2496ed?logo=docker&logoColor=white)](https://docs.docker.com/)
+
+#### OBS: Recomendo fortemente utilizar o Docker para executar a aplicação por questões de performance
+
+Execute o seguinte comando no terminal que instala as dependências, cria uma build nova da aplicação, em seguida exclui o container do Docker caso exista e depois recria um container com a aplicação executando em um NodeJS de uma imagem da distribuição Alpine do linux:
+
+```bash
+yarn deploy:docker
+```
+ou
+```bash
+npm run deploy:docker
+```
+
+> Após a execução o container api-integration será criado no seu Docker
+
+### Verificando se a aplicação está executando corretamente 🐳
+
+Agora abra a sua aplicação do `Docker` e clique no container `api-integration` ➡ `api-marlon`, e deverá ver os seguintes logs:
+
+![Node container Logs](.github/media/docker-logs.png)
+
+> Se tudo estiver executando perfeitamente os logs da imagem acima deverão ser exibidos.
+
+## Execução da aplicação de forma local via terminal 🖥
+
+```bash
+yarn deploy
+```
+ou
+```bash
+npm run deploy
+```
+
+## Agora vamos direto ao Endpoint (badum tiss 🥁)
+
+**GET** Get all daily resumes or a resume by date:
+
+> /api/integration/resumes
+> /api/integration/resumes?date=2021-10-04
 
 ## Arquitetura da Aplicação
 
@@ -88,36 +143,3 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 
 ![UML do BD](.github/media/UML.png)
 
-## Depois de clonar o repositório 📦
-
-Execute o seguinte comando no terminal para instalar todas as dependências:
-
-```bash
-npm run deploy
-```
-ou
-```bash
-yarn deploy
-```
-
-## Criação dos containers com Docker para execução da aplicação 🐳
-
-Execute o seguinte comando no terminal para criar uma build da aplicação em uma imagem do Node.JS onde a API executará e criar junto um container, dentro desse container serão criados 2 containers um para o Node.JS o outro para o MongoDB:
-
-```bash
-npm run deploy:docker
-```
-ou
-```bash
-yarn deploy:docker
-```
-
-> Após a execução o container node-backend-mvc será gerada no seu Docker
-
-## Verificando se a aplicação está executando corretamente 🐳
-
-Agora abra a sua aplicação do `Docker` e clique no container `api-integration` ➡ `api-marlon`, e deverá ver os seguintes logs:
-
-![Node container Logs](.github/media/docker-logs.png)
-
-> Se tudo estiver executando perfeitamente os logs da imagem acima deverão ser exibidos.
