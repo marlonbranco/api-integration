@@ -87,6 +87,9 @@ Ou consultar um resumo pela data
 ```
 /api/integration/resumes?date=2021-10-04
 ```
+### Para executar o endpoint no Postman basta clicar no botão abaixo:
+
+[![Postman](https://img.shields.io/badge/-POSTMAN-FF6C37?logo=postman&logoColor=white)](https://tinyurl.com/api-integration)
 
 ## Arquitetura da Aplicação
 
