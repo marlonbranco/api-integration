@@ -11,7 +11,9 @@ class DailyResumeUseCase {
   ) {}
 
   public async getDailyResumes(date?: any): Promise<IDailyResumeDTO[]> {
+    console.log(date);
     if (date) {
+      console.log(date);
       const parsedDate = parseISO(date);
       return this.dailyResumeRepository.findResumeByDate(parsedDate)
     }

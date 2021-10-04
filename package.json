@@ -6,6 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist/src --copy-files --no-copy-ignored",
+    "deploy": "yarn && yarn build && yarn babel src --extensions \".js,.ts\" --out-dir dist/src --copy-files --no-copy-ignored",
+    "deploy:docker": "yarn && yarn build && yarn babel src --extensions \".js,.ts\" --out-dir dist/src --copy-files --no-copy-ignored && docker compose up -d",
     "start": "node dist/src/shared/infra/http/server.js",
     "start:dev": "ts-node-dev -r tsconfig-paths/register --inspect --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts"
   },

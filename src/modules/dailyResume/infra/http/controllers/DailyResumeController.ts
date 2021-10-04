@@ -6,6 +6,7 @@ import DailyResumeUseCase from '@modules/dailyResume/useCases/DailyResumeUseCase
 class DailyResumeController {
   public async index(request: Request, response: Response) {
     const { date } = request.query;
+
     const dailyResumeUseCase = container.resolve(DailyResumeUseCase);
 
     const dailyResumes = await dailyResumeUseCase.getDailyResumes(date);

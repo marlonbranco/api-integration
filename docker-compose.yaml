@@ -1,0 +1,13 @@
+version:  '3'
+
+services:
+  api:
+    image: node:14.15.1-alpine3.10
+    container_name: api-marlon
+    restart: always
+    command: npm run start:dev
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - '3333:3333'
