@@ -85,7 +85,7 @@ npm run deploy
 ```
 /api/integration/resumes
 ```
-Ou consultar um resumo pela data
+Ou consultar um resumo pela data: (AAAA-mm-dd)
 ```
 /api/integration/resumes?date=2021-10-04
 ```
