@@ -66,7 +66,7 @@ npm run deploy
 
 ## Agora vamos direto ao Endpoint (badum tiss 🥁)
 
-**GET** Get all daily resumes or a resume by date:
+**GET** Consultar todos os resumos diários ou consultar um resumo pela data:
 
 > /api/integration/resumes
 > /api/integration/resumes?date=2021-10-04
@@ -74,6 +74,10 @@ npm run deploy
 ## Arquitetura da Aplicação
 
 ![API Archtecture](.github/media/api-archtecture.png)
+
+## Estrutura do Banco 🗃
+
+![UML do BD](.github/media/UML.png)
 
 ## Entendendo a estrutura de pastas 🗂
 
@@ -138,8 +142,3 @@ npm run deploy
   │       └── mongoose        # Configuração do Mongoose para conexão com o MongoDB
   └── ...
 ```
-
-## Estrutura do Banco 🗃
-
-![UML do BD](.github/media/UML.png)
-
