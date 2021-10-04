@@ -16,6 +16,10 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 | Node 12.x     | Executar a aplicação de forma local |
 | Postman ^4.4.3 | Realizar requests à API |
 
+## Arquitetura da Aplicação
+
+![API Archtecture](.github/media/api-archtecture.png)
+
 ## Entendendo a estrutura de pastas 🗂
 
 ```

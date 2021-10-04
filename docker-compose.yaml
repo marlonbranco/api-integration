@@ -5,7 +5,7 @@ services:
     image: node:14.15.1-alpine3.10
     container_name: api-marlon
     restart: always
-    command: npm run start:dev
+    command: npm run start
     working_dir: /app
     volumes:
       - ./:/app

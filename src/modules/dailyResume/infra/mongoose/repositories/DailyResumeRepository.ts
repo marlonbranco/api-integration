@@ -9,11 +9,11 @@ class DailyResumeRepository implements IDailyResumeRepository {
   }
 
   public async listAllDailyResumes(): Promise<IDailyResumeDTO[]> {
-    return DailyResume.find().lean();
+    return DailyResume.find().sort({ resumeDate: -1 }).lean().select('-__v');
   }
 
   public async findResumeByDate(date: Date): Promise<any> {
-    return DailyResume.findOne({ resumeDate: { $eq: date } });
+    return DailyResume.findOne({ resumeDate: { $eq: date } }).lean().select('-__v');
   }
 
   public async findDealById(dealId: number): Promise<any> {

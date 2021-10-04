@@ -84,7 +84,6 @@ class BlingOrdersUseCase implements IBling {
     for await (const order of orders) {
       await delayBetweenRequests(334);
       await this.registerSingleOrder(order);
-      console.log('ORDER SENT')
     }
   }
 }
