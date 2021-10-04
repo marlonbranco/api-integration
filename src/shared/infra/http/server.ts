@@ -2,9 +2,9 @@ import 'reflect-metadata';
 import 'dotenv/config';
 import 'express-async-errors';
 
-import mongooseConnection from '@sharedInfra/mongoose';
-
 import ErrorsApp from '@errors/ErrorsApp';
+import mongooseConnection from '../mongoose/index';
+
 import '@shared/containers';
 import app from './app';
 

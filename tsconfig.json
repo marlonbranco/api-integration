@@ -1,41 +1,32 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "es6",
     "module": "commonjs",
-    "lib": ["es2019"],
-    "allowJs": true,
-    "sourceMap": true,
     "outDir": "./dist",
-    "removeComments": true,
+    "rootDir": "./",
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noImplicitReturns": true,
-    "moduleResolution": "node",
-    "baseUrl": "./",
+    "strictPropertyInitialization": false,
+    "baseUrl": "./src",
+    "allowJs": true,
     "paths": {
-      "@modules/*": ["./src/modules/*"],
-      "@errors/*": ["./src/shared/errors/*"],
-      "@shared/*": ["./src/shared/*"],
-      "@sharedInfra/*": ["./src/shared/infra/*"],
-      "@sharedProviders/*": ["./src/shared/containers/providers/*"],
-      "@utils/*": ["./src/shared/utils/*"]
+      "@modules/*": ["modules/*"],
+      "@errors/*": ["shared/errors/*"],
+      "@shared/*": ["shared/*"],
+      "@utils/*": ["shared/utils/*"]
     },
-    "rootDirs": ["./src", "./tests"],
-    "typeRoots": ["./node_modules/@types", "./src/@types"],
-    "types": ["node", "jest"],
-    "allowSyntheticDefaultImports": true,
+    "rootDirs": [
+      "./src"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
-  },
-  "include": ["./src/**/*.ts", "./tests/*.ts"],
-  "exclude": ["./node_modules", "dist"]
+  }
 }
 

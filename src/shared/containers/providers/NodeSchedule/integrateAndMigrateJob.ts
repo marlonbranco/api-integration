@@ -2,21 +2,26 @@ import { RecurrenceRule, scheduleJob } from 'node-schedule';
 import { container } from 'tsyringe';
 import { performance } from 'perf_hooks';
 import IntegrationUseCase from '@modules/integration/useCases/IntegrationUseCase';
+import ErrorsApp from '@errors/ErrorsApp';
 
 const rule = new RecurrenceRule();
 rule.second = [0, 9, 19, 29, 39, 49, 59];
 
 const scheduledJob = scheduleJob(rule, async () => {
-  const initialTime = performance.now();
-  console.log('[NODE-SCHEDULE] Integration initiated.')
+  try {
+    const initialTime = performance.now();
+    console.log('[NODE-SCHEDULE] Integration initiated.')
 
-  const integration = container.resolve(IntegrationUseCase);
+    const integration = container.resolve(IntegrationUseCase);
 
-  await integration.registerWonDealsOnBling();
+    await integration.registerWonDealsOnBling();
 
-  const finishedTime = performance.now();
-  const durationInSeconds = (((finishedTime - initialTime) * 100) / 1000) / 100;
-  console.log('[NODE-SCHEDULE] Integration done in:', `${durationInSeconds.toPrecision(2)}s`)
+    const finishedTime = performance.now();
+    const durationInSeconds = (((finishedTime - initialTime) * 100) / 1000) / 100;
+    console.log('[NODE-SCHEDULE] Integration done in:', `${durationInSeconds.toPrecision(2)}s`)
+  } catch (error: any) {
+    throw new ErrorsApp(error)
+  }
 })
 
 export default scheduledJob;

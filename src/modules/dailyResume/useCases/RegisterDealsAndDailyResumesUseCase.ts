@@ -3,7 +3,6 @@ import {
   parseISO, startOfDay
 } from 'date-fns';
 import IDailyResumeRepository from '@modules/dailyResume/repositories/IDailyResumeRepository';
-import normalizeDate from '@shared/utils/normalizeDate';
 import IDailyResumeDTO from '../dtos/IDailyResumeDTO';
 import IPipedriveResponseDTO from '../dtos/IPipedriveResponseDTO';
 import UpdateDailyResumeUseCase from './UpdateDailyResumeUseCase';
@@ -31,7 +30,7 @@ class RegisterDealsAndDailyResumesUseCase {
 
     if (duplicatedDatesRemoved.length) {
       for await (const date of duplicatedDatesRemoved) {
-        const parsedDate = normalizeDate(parseISO(date));
+        const parsedDate = parseISO(date);
         const dailyResumeExists = await this.dailyResumeRepository.findResumeByDate(parsedDate);
 
         if (dailyResumeExists) {

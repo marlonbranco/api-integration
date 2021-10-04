@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import { errors } from 'celebrate';
 
-import errorHandling from '@sharedInfra/http/middlewares/errorHandling';
+import errorHandling from '@shared/infra/http/middlewares/errorHandling';
 import scheduledJob from '@shared/containers/providers/NodeSchedule/integrateAndMigrateJob';
 import routes from '../routes/index';
 

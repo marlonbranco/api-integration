@@ -9,7 +9,7 @@ if (!databaseUrl) {
 const mongooseOptions = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  useFindAndModify: true,
+  useFindAndModify: false,
   useCreateIndex: true,
 };
 
