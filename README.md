@@ -46,7 +46,7 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 
 #### 🔴 OBS: Recomendo fortemente utilizar o Docker para executar a aplicação por questões de performance
 
-Execute o seguinte comando no terminal que instala as dependências, cria uma build nova da aplicação, em seguida exclui o container do Docker caso exista e depois recria um container com a aplicação executando em um NodeJS de uma imagem da distribuição Alpine do linux:
+Após clonar o repositório, acesse a pasta via terminal e execute o seguinte comando:
 
 ```bash
 yarn deploy:docker
@@ -55,6 +55,8 @@ ou
 ```bash
 npm run deploy:docker
 ```
+> Este comando no instala as dependências, cria uma build nova da aplicação, em seguida exclui o container do Docker caso exista e depois recria um container com a aplicação executando em um NodeJS de uma imagem da distribuição Alpine do linux.
+
 
 > Após a execução o container api-integration será criado no seu Docker
 

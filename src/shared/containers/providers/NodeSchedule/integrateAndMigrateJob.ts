@@ -10,7 +10,7 @@ rule.second = [0, 9, 19, 29, 39, 49, 59];
 const scheduledJob = scheduleJob(rule, async () => {
   try {
     const initialTime = performance.now();
-    console.log('[NODE-SCHEDULE] Integration initiated.')
+    console.log('[NODE-SCHEDULE] Migration initiated.')
 
     const integration = container.resolve(IntegrationUseCase);
 
@@ -18,7 +18,7 @@ const scheduledJob = scheduleJob(rule, async () => {
 
     const finishedTime = performance.now();
     const durationInSeconds = (((finishedTime - initialTime) * 100) / 1000) / 100;
-    console.log('[NODE-SCHEDULE] Integration done in:', `${durationInSeconds.toPrecision(2)}s`)
+    console.log('[NODE-SCHEDULE] Migration done in:', `${durationInSeconds.toPrecision(2)}s`)
   } catch (error: any) {
     throw new ErrorsApp(error)
   }
