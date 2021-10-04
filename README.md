@@ -18,15 +18,15 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 | Postman ^4.4.3 | Realizar requests à API |
 
 ### Variáveis de ambiente
-| NOME | EXEMPLO | DESCRIÇÃO |
+| NOME | DESCRIÇÃO |
 | --- | --- | --- |
-| APP_URL | http://0.0.0.0 | URL que a aplicação irá ser executada. |
-| APP_PORT | 3333 | Porta que a aplicação ficará disponível. |
-| MONGODB_URI | mongodb://marlonbranco:789456@api-integrations-shard-00-00.6kzc4.mongodb.net:27017,api-integrations-shard-00-01.6kzc4.mongodb.net:27017,api-integrations-shard-00-02.6kzc4.mongodb.net:27017/apiIntegration?ssl=true&replicaSet=atlas-828xr4-shard-0&authSource=admin&retryWrites=true&w=majority | URI de acesso do MongoDB, deve conter usuário e senha na URI. este pode ser um MongoDB local ou Mongo Atlas |
-| PIPEDRIVE_API_URL | https://api.pipedrive.com/v1 | URL da API do Pipedrive. |
-| PIPEDRIVE_API_TOKEN | 7eee7cc8090157a449b5c1bbbb20139c74446979 | Token de acesso a API do Pipedrive. |
-| BLING_API_URL | https://bling.com.br/Api/v2 | URL da API do Bling. |
-| BLING_API_KEY | 166562a621bfcba9f63c13c37e0a74e4dd85b8c8703081fe960b5d27a80218158c983308 | Key de acesso a API do Pipedrive. |
+| APP_URL | URL que a aplicação irá ser executada. |
+| APP_PORT | Porta que a aplicação ficará disponível. |
+| MONGODB_URI | URI de acesso do MongoDB, deve conter usuário e senha na URI. este pode ser um MongoDB local ou Mongo Atlas |
+| PIPEDRIVE_API_URL | URL da API do Pipedrive. |
+| PIPEDRIVE_API_TOKEN | Token de acesso a API do Pipedrive. |
+| BLING_API_URL | URL da API do Bling. |
+| BLING_API_KEY | Key de acesso a API do Pipedrive. |
 
 
 ## Containerização da aplicação utilizando o Docker 🐳
