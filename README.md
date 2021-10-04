@@ -19,7 +19,7 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 
 ### Variáveis de ambiente
 | NOME | DESCRIÇÃO |
-| --- | --- | --- |
+| --- | --- |
 | APP_URL | URL que a aplicação irá ser executada. |
 | APP_PORT | Porta que a aplicação ficará disponível. |
 | MONGODB_URI | URI de acesso do MongoDB, deve conter usuário e senha na URI. este pode ser um MongoDB local ou Mongo Atlas |
