@@ -78,11 +78,12 @@ npm run deploy
 
 ## Agora vamos direto ao Endpoint (badum tiss 🥁)
 
-**GET** Consultar todos os resumos diários ou consultar um resumo pela data:
+**GET** Consultar todos os resumos diários:
 
 ```
 /api/integration/resumes
 ```
+Ou consultar um resumo pela data
 ```
 /api/integration/resumes?date=2021-10-04
 ```
