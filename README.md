@@ -101,8 +101,9 @@ Ou consultar um resumo pela data
 
 ## Entendendo a estrutura de pastas 🗂
 
+### Pasta raiz do projeto 📁
 ```
-    ├── .github
+    ├── .github        # Arquivos utilizados pelo GitHub
     ├── src            # Arquivos de Recursos da aplicação
     │   ├── modules    # Módulos da aplicação onde se encontrão os domínios
     │   └── shared     # Pasta com os recursos compartilhados entre os domínios
