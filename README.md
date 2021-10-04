@@ -6,7 +6,7 @@
 
 Uma API RESTful que tem a função de integrar o CRM da Pipedrive com o ERP da Bling, durante a integração a API migra os 'Deals' com "status=won" e gera novos Pedidos no Bling, tudo isso é feito utilizando as tecnologias JavaScript, TypeScript, NodeJS, Babel, Express, Mongoose, Axios, Node-schedule 🛠
 
-O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão DDD, aplicando os conceitos de CleanArchture, CleanCode e SOLID.
+O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão `DDD`, aplicando os conceitos de `CleanArchture`, `CleanCode` e `SOLID`.
 
 #### Requerimentos ✅
 
@@ -39,12 +39,12 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 | BLING_API_URL | URL da API do Bling. |
 | BLING_API_KEY | Key de acesso a API do Pipedrive. |
 
-#### OBS: Apenas subi o arquivo .env junto com a aplicação para facilitar a execução do mesmo.
+#### OBS: Apenas subi o arquivo .env junto com a aplicação para facilitar a execução da mesma.
 
 ## Containerização da aplicação utilizando o Docker 🐳
 [![Docker](https://img.shields.io/badge/-Docker-2496ed?logo=docker&logoColor=white)](https://docs.docker.com/)
 
-#### OBS: Recomendo fortemente utilizar o Docker para executar a aplicação por questões de performance
+#### 🔴 OBS: Recomendo fortemente utilizar o Docker para executar a aplicação por questões de performance
 
 Execute o seguinte comando no terminal que instala as dependências, cria uma build nova da aplicação, em seguida exclui o container do Docker caso exista e depois recria um container com a aplicação executando em um NodeJS de uma imagem da distribuição Alpine do linux:
 
