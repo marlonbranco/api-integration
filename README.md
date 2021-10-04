@@ -89,11 +89,11 @@ O projeto foi desenvolvido utilizando a arquitetura ou `design pattern` padrão 
 Execute o seguinte comando no terminal para instalar todas as dependências:
 
 ```bash
-npm install
+npm run deploy
 ```
 ou
 ```bash
-yarn
+yarn deploy
 ```
 
 ## Criação dos containers com Docker para execução da aplicação 🐳
@@ -101,7 +101,11 @@ yarn
 Execute o seguinte comando no terminal para criar uma build da aplicação em uma imagem do Node.JS onde a API executará e criar junto um container, dentro desse container serão criados 2 containers um para o Node.JS o outro para o MongoDB:
 
 ```bash
-docker-compose -f docker-compose.yml up -d
+npm run deploy:docker
+```
+ou
+```bash
+yarn deploy:docker
 ```
 
 > Após a execução o container node-backend-mvc será gerada no seu Docker
@@ -113,4 +117,3 @@ Agora abra a sua aplicação do `Docker` e clique no container `api-integration`
 ![Node container Logs](.github/media/docker-logs.png)
 
 > Se tudo estiver executando perfeitamente os logs da imagem acima deverão ser exibidos.
-
